@@ -1,4 +1,4 @@
-# Ackee Cookbook Android Version
+# Ackee Cookbook Web Version
 
 Welcome, stranger! Wanna join us at [Ackee][1]? Or you just don't know what to do on a lazy sunday afternoon ?
 
@@ -14,10 +14,9 @@ live server runs at this address [https://cookbook.ack.ee][3]
 ## Designs
 Application should contain these 3 screens. You can also download a Sketch app file over [here][4]
 
-<img src="https://raw.githubusercontent.com/AckeeCZ/cookbook-android-task/master/screens/01_list.png" width="200">&nbsp;&nbsp;&nbsp;
-<img src="https://raw.githubusercontent.com/AckeeCZ/cookbook-android-task/master/screens/03_add.png" width="200">&nbsp;
-<img src="https://raw.githubusercontent.com/AckeeCZ/cookbook-android-task/master/screens/02_detail.png" width="200">&nbsp;&nbsp;&nbsp;
-
+<img src="https://raw.githubusercontent.com/AckeeCZ/cookbook-web-task/master/screens/01_list.png" width="200">&nbsp;&nbsp;&nbsp;
+<img src="https://raw.githubusercontent.com/AckeeCZ/cookbook-web-task/master/screens/03_add.png" width="200">&nbsp;
+<img src="https://raw.githubusercontent.com/AckeeCZ/cookbook-web-task/master/screens/02_detail.png" width="200">&nbsp;&nbsp;&nbsp;
 
 - List of recipes
 - Form to add a new recipe (via the plus button)
@@ -25,11 +24,11 @@ Application should contain these 3 screens. You can also download a Sketch app f
 
 ### Tasks for you
 
-We slightly recommend you to use our React + Redux + Webpack skeleton but you can use whatever framework you want. *The result should be a frontend app running in a browser.*
+We slightly recommend you to use our React + Redux + Webpack skeleton but you can use whatever framework you want. **The result should be a frontend app running in a browser.**
 
 - Write the app.
 - Use JavaScript to access API and to modify DOM.
-- Use mobile first CSS design pattern to create a look of the app.
+- Use mobile first CSS approach to create a look of the app.
 - The app should run in common browsers (i.e. you don't have to support IE10 and lower).
 - The user should be able to rate a recipe only once (user = browser).
 - If you want to add anything extra, just go for it!
