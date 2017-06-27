@@ -22,7 +22,7 @@ Application should contain these 3 screens. You can also download a Sketch app f
 - Form to add a new recipe (via the plus button)
 - Detail of a recipe with rating (on a list item click)
 
-### Tasks for you
+## Tasks for you
 
 We slightly recommend you to use our React + Redux + Webpack skeleton but you can use whatever framework you want. **The result should be a frontend app running in a browser.**
 
