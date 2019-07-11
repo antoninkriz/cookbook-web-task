@@ -6,6 +6,7 @@ We have a tasty Task for you! Create a JavaScript version of our delicious Ackee
 - API (and a running server)
 - Designs
 - Simple React + Redux + Webpack skeleton with all assets
+- Or we recommend to use - https://facebook.github.io/create-react-app/docs/getting-started
 
 ## API & Server
 Documentation for the api can be found on [apiary][2] and the
