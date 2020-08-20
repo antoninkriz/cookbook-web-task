@@ -146,7 +146,7 @@ if (environment === 'production') {
     contentBase: path.join(__dirname),
     port: 8080
   };
-  envConfig.devtool = 'eval';
+  envConfig.devtool = 'eval-source-map';
 }
 
 module.exports = merge(config, commonConfig, envConfig);

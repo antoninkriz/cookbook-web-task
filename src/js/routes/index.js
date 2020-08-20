@@ -1,10 +1,13 @@
 import React from 'react';
-import {BrowserRouter} from 'react-router-dom';
+import {BrowserRouter, Route} from 'react-router-dom';
+import RecipesList from "./List/list";
 
 const Routing = () => (
-    <BrowserRouter>
-        <h1>Ackee cookbook</h1>
-    </BrowserRouter>
+  <BrowserRouter>
+    <Route path='/'>
+      <RecipesList />
+    </Route>
+  </BrowserRouter>
 );
 
 export default Routing;
