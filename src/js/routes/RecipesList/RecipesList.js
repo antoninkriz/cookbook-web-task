@@ -1,8 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import {IoIosAddCircleOutline, IoMdTime} from 'react-icons/io';
+import {ITEMS_PER_PAGE} from '../../consts';
 import {getRecipesList} from '../../redux/actions/recipesActions';
-import {ITEMS_PER_PAGE} from "../../consts";
+import TitleBar from '../../components/TitleBar/TitleBar';
+import image from '../../../images/image.png';
+import Stars from "../../components/Stars/Stars";
 
 class RecipesList extends React.Component {
   componentDidMount() {
@@ -12,12 +16,29 @@ class RecipesList extends React.Component {
   render() {
     const skeletonsCount = Math.floor(ITEMS_PER_PAGE / 2);
     const skeletons = new Array(skeletonsCount).fill(undefined).map((v, i) => i);
+
+    const addRecipeButton = (
+      <IoIosAddCircleOutline onClick={() => console.log('aaaaa')} />
+    );
+
     return (
-      <div>
-        <div>
+      <>
+        <TitleBar title='Recepty' showBack={true} right={addRecipeButton} />
+        <div className='recipes'>
           {
             this.props.recipesList.map(recipe =>
-              <p key={recipe.id}>{recipe.name}</p>
+              <article className='recipes__item' key={recipe.id}>
+                <img className='recipes__item__image' src={image} alt='image' />
+                <div className='recipes__item__content'>
+                  <h3 className='recipes__item__content__title'>{recipe.name}</h3>
+                  <div className='recipes__item__content__stars'>
+                    <Stars score={recipe.score} />
+                  </div>
+                  <span>
+                    <IoMdTime /> {recipe.duration} min.
+                  </span>
+                </div>
+              </article>
             )
           }
           {this.props.loading &&
@@ -26,7 +47,7 @@ class RecipesList extends React.Component {
           )
           }
         </div>
-      </div>
+      </>
     );
   }
 }
@@ -36,9 +57,9 @@ RecipesList.propTypes = {
   loading: PropTypes.bool.isRequired,
   endOfRecipesList: PropTypes.bool.isRequired,
   recipesList: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     duration: PropTypes.number.isRequired,
-    id: PropTypes.string.isRequired,
     score: PropTypes.number.isRequired
   })).isRequired,
 };

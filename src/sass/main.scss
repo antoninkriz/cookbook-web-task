@@ -1,13 +1,11 @@
-@font-face {
-  font-family: Roboto;
-  src: url("../fonts/Roboto-Regular.ttf");
-  font-weight: normal;
+@import "fonts";
+@import "variables";
+
+* {
+  box-sizing: border-box;
 }
 
 body {
-  font-family: Roboto, sans-serif;
-}
-
-h1 {
-  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
 }

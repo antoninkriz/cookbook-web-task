@@ -1,6 +1,6 @@
 import React from 'react';
 import {BrowserRouter, Route} from 'react-router-dom';
-import RecipesList from "./List/list";
+import RecipesList from './RecipesList/RecipesList';
 
 const Routing = () => (
   <BrowserRouter>

@@ -1,5 +1,5 @@
 import {RECIPE_LIST} from '../types';
-import {ITEMS_PER_PAGE} from "../../consts";
+import {ITEMS_PER_PAGE} from '../../consts';
 
 const initialState = {
   endOfList: false,

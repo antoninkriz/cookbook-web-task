@@ -1,4 +1,4 @@
-import {default as axios} from "axios";
+import {default as axios} from 'axios';
 import {loadingEnd, loadingStart} from './uiActions';
 import {RECIPE_LIST} from '../types';
 import {API_URL, ITEMS_PER_PAGE} from '../../consts';
