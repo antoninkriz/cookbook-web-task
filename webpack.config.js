@@ -113,10 +113,10 @@ const commonConfig = {
   optimization: {
     splitChunks: {
       chunks: 'async',
-      minSize: 20000,
+      minSize: 50000,
       maxSize: 200000,
       minChunks: 1,
-      maxAsyncRequests: 10,
+      maxAsyncRequests: 20,
       maxInitialRequests: 5,
       automaticNameDelimiter: '~',
       enforceSizeThreshold: 50000,
@@ -126,7 +126,6 @@ const commonConfig = {
           priority: -10
         },
         default: {
-          minChunks: 2,
           priority: -20,
           reuseExistingChunk: true
         }
@@ -155,12 +154,11 @@ if (environment === 'production'
     minimize: true,
     minimizer: [
       new TerserPlugin({
-        sourceMap: true,
-        extractComments: false
+        sourceMap: false
       })
     ]
   }
-  envConfig.devtool = 'source-map';
+  envConfig.devtool = false;
 } else {
   envConfig.plugins = [
     new LiveReload()
