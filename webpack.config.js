@@ -154,11 +154,11 @@ if (environment === 'production'
     minimize: true,
     minimizer: [
       new TerserPlugin({
-        sourceMap: false
+        sourceMap: true
       })
     ]
   }
-  envConfig.devtool = false;
+  envConfig.devtool = 'source-map';
 } else {
   envConfig.plugins = [
     new LiveReload()
