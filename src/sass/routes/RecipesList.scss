@@ -2,7 +2,7 @@
 @import "../variables";
 
 .recipes {
-  margin: ($size-titleBar + $size-margin * 2) 0 0;
+  margin: ($size-margin * 2) 0 0;
 
   &__item {
     position: relative;

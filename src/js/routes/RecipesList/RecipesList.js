@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {IonAddCircle} from '../../components/Icons';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 // Utils
@@ -12,13 +11,14 @@ import {initArrayIntegers} from '../../utils/araryInit';
 import {getRecipesList} from '../../redux/actions/recipesActions';
 
 // Components
+import {IonAddCircle} from '../../components/Icons';
 import TitleBar from '../../components/TitleBar/TitleBar';
 import RecipeItem from './_recipeItem';
 import RecipeSkeleton from './_recipeSkeleton';
 
 class RecipesList extends React.Component {
   componentDidMount() {
-    this.props.getRecipesList(0);
+    this.props.getRecipesList(0, true);
   }
 
   render() {
@@ -33,7 +33,7 @@ class RecipesList extends React.Component {
 
     return (
       <>
-        <TitleBar title='Recepty' showBack={true} right={addRecipeButton}/>
+        <TitleBar title='Recepty' showBack={false} right={addRecipeButton}/>
         <InfiniteScroll
           className='recipes'
           dataLength={recipesList.length}

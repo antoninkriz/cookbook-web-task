@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
-import {IonTime} from '../../components/Icons';
 
 // Components
+import {IonTime} from '../../components/Icons';
 import Stars from '../../components/Stars/Stars';
 
 // Files
@@ -15,7 +15,7 @@ const RecipeItem = (props) => {
   return (
     <Link className='recipes__item' to={`/recipe/${recipe.id}`}>
       <article className='recipes__item__wrapper'>
-        <img className='recipes__item__wrapper__image' src={image} alt='image' />
+        <img className='recipes__item__wrapper__image' src={image} alt={recipe.name} />
         <div className='recipes__item__wrapper__content'>
           <h3 className='recipes__item__wrapper__content__title'>{recipe.name}</h3>
           <div className='recipes__item__wrapper__content__stars'>

@@ -139,7 +139,7 @@ const commonConfig = {
     }),
     new CopyWebpackPlugin({
       patterns: [
-        { from: 'static' }
+        {from: 'static'}
       ]
     })
   ]
@@ -165,9 +165,10 @@ if (environment === 'production'
   ];
   envConfig.devServer = {
     contentBase: path.join(__dirname),
+    historyApiFallback: true,
     port: 8080
   };
-  envConfig.devtool = 'eval-source-map';
+  envConfig.devtool = 'source-map';
 }
 
 module.exports = merge(config, commonConfig, envConfig);
