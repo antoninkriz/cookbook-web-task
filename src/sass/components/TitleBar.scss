@@ -22,12 +22,21 @@
     color: black;
   }
 
-  &--white &__item:hover, &--white &__item:focus {
+  &--white &__item:hover, &--white &__item:focus,
+  &--white &__item__link:hover, &--white &__item__link:focus {
     color: $color-pink;
+  }
+
+  &--white &__item__link {
+    color: $color-blue;
   }
 
   &--transparent {
     background: transparent;
+    color: $color-white;
+  }
+
+  &--transparent &__item__link {
     color: $color-white;
   }
 
@@ -48,10 +57,7 @@
 
     &__link {
       text-decoration: none;
-
-      &:visited {
-        color: inherit;
-      }
+      transition: color .15s ease-in-out;
 
       &__icon {
         height: $size-icon;
