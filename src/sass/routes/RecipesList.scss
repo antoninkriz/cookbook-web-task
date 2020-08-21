@@ -11,6 +11,10 @@
     text-decoration: none;
     color: $color-black;
 
+    &:hover &__wrapper__content__title, &:focus &__wrapper__content__title {
+      color: $color-pink;
+    }
+
     &:last-child {
       padding-bottom: $size-padding;
       margin-bottom: $size-margin;
@@ -64,6 +68,7 @@
           font-size: 1rem;
           font-weight: 600;
           color: $color-blue;
+          transition: color .15s ease-in-out;
 
           &--skeleton {
             width: 100%;

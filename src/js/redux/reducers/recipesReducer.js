@@ -1,4 +1,4 @@
-import {RECIPE_DETAIL, RECIPE_EMPTY, RECIPE_LIST, RECIPE_RATE} from '../types';
+import {RECIPE_CREATE, RECIPE_DETAIL, RECIPE_EMPTY, RECIPE_LIST, RECIPE_RATE} from '../types';
 import {ITEMS_PER_PAGE} from '../../consts';
 
 const initialState = {
@@ -33,7 +33,7 @@ const recipesReducer = (state = initialState, action) => {
           ...state.details,
           [action.payload.id]: {...action.payload}
         }
-      }
+      };
     case RECIPE_RATE:
       const newState = {
         ...state,
@@ -45,6 +45,14 @@ const recipesReducer = (state = initialState, action) => {
 
       localStorage.setItem(RECIPE_RATE, JSON.stringify(newState.rated));
       return newState;
+    case RECIPE_CREATE:
+      return {
+        ...state,
+        details: {
+          ...state.details,
+          [action.payload.id]: {...action.payload}
+        }
+      };
     default:
       return state;
   }

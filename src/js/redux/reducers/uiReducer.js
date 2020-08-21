@@ -1,7 +1,8 @@
-import {LOADING_END, LOADING_START} from '../types';
+import {CREATE_CLEAR, CREATE_ERROR, LOADING_END, LOADING_START} from '../types';
 
 const initialState = {
-  loading: false
+  loading: false,
+  createError: ''
 };
 
 const uiReducer = (state = initialState, action) => {
@@ -15,6 +16,16 @@ const uiReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false
+      };
+    case CREATE_ERROR:
+      return {
+        ...state,
+        createError: action.payload
+      };
+    case CREATE_CLEAR:
+      return {
+        ...state,
+        createError: ''
       };
     default:
       return state;

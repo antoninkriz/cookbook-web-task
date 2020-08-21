@@ -1,6 +1,8 @@
 // UI types
 export const LOADING_START = 'LOADING_START';
 export const LOADING_END = 'LOADING_END';
+export const CREATE_ERROR = 'CREATE_ERROR';
+export const CREATE_CLEAR = 'CREATE_CLEAR';
 
 // RECIPES types
 export const RECIPE_LIST = 'RECIPE_LIST';

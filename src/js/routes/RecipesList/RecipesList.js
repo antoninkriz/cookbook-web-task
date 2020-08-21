@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {Link} from "react-router-dom";
 import {connect} from 'react-redux';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
@@ -18,7 +19,7 @@ import RecipeSkeleton from './_recipeSkeleton';
 
 class RecipesList extends React.Component {
   componentDidMount() {
-    this.props.getRecipesList(0, true);
+    this.props.getRecipesList(0);
   }
 
   render() {
@@ -28,12 +29,14 @@ class RecipesList extends React.Component {
     const skeletons = <>{initArrayIntegers(skeletonsCount).map(key => <RecipeSkeleton key={key} />)}</>
 
     const addRecipeButton = (
-      <IonAddCircle className='bar__item__icon' onClick={() => alert('Add a recipe')} />
+      <Link className='bar__item__link' to='/create'>
+        <IonAddCircle className='bar__item__link__icon' />
+      </Link>
     );
 
     return (
       <>
-        <TitleBar title='Recepty' showBack={false} right={addRecipeButton} />
+        <TitleBar title='Recepty' type='white' showBack={false} right={addRecipeButton} />
         <InfiniteScroll
           className='recipes'
           dataLength={recipesList.length}

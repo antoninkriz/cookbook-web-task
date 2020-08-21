@@ -38,13 +38,10 @@
     left: 0;
     right: 0;
     z-index: -1;
+    background-color: darken($color-pink, .5);
     background-size: cover;
     background-position: center;
     filter: brightness(.75);
-
-    &--skeleton {
-      background: darken($color-pink, .5);
-    }
 
     &:not(&--skeleton):before {
       content: "";
@@ -60,6 +57,11 @@
   }
 
   &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+    min-height: 100vh;
     margin: #{'min(100vw, 50vh)'} 0 0;
 
     &__title {
@@ -138,6 +140,7 @@
     }
 
     &__text {
+      flex: 1;
       padding: ($size-padding * 4) ($size-padding * 2);
       background: $color-white;
 
@@ -157,6 +160,7 @@
       &__paragraph {
         margin: 0;
         letter-spacing: -.5px;
+        white-space: pre-line;
 
         &--skeleton {
           height: 3rem;
@@ -214,6 +218,7 @@
       &__stars {
         direction: rtl;
         color: rgba($color-white, .75);
+        cursor: pointer;
 
         &--skeleton {
           width: 85%;

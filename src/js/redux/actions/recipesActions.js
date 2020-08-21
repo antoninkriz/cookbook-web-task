@@ -1,17 +1,11 @@
 import {default as axios} from 'axios';
 import {loadingEnd, loadingStart} from './uiActions';
-import {RECIPE_DETAIL, RECIPE_EMPTY, RECIPE_LIST, RECIPE_RATE} from '../types';
+import {CREATE_ERROR, RECIPE_CREATE, RECIPE_DETAIL, RECIPE_LIST, RECIPE_RATE} from '../types';
 import {API_URL, ITEMS_PER_PAGE} from '../../consts';
 
-export const getRecipesList = (page, purge = false) => (dispatch) => {
+export const getRecipesList = (page) => (dispatch) => {
   dispatch(loadingStart());
   axios.get(`${API_URL}/?limit=${ITEMS_PER_PAGE}&offset=${ITEMS_PER_PAGE * page}`).then(r => {
-    if (purge) {
-      dispatch({
-        type: RECIPE_EMPTY,
-      });
-    }
-
     dispatch({
       type: RECIPE_LIST,
       payload: r.data
@@ -46,8 +40,34 @@ export const postRecipeRating = (id, score) => (dispatch) => {
     }
   });
 
-  axios.post(`${API_URL}/${id}/rating`, {score: score})
-    .then(() => {
-    })
-    .finally(() => dispatch(loadingEnd()));
+  axios.post(`${API_URL}/${id}/rating`, {score: score}).then();
 };
+
+export const postRecipeNew = (name, description, ingredients, duration, info) => (dispatch) => {
+  dispatch(loadingStart());
+  axios.post(`${API_URL}`, {
+    name,
+    description,
+    ingredients,
+    duration,
+    info
+  }).then(r => {
+    dispatch({
+      type: RECIPE_CREATE,
+      payload: r.data
+    });
+    dispatch({
+      type: CREATE_ERROR,
+      payload: false
+    });
+  }).catch(e => {
+    dispatch({
+      type: CREATE_ERROR,
+      payload: e.response?.status === 422
+        ? 'Recept s tímto názvem již existuje'
+        : e.response.data.message.startsWith('Name must obtain Ackee at least once! This is Ackee cookbook GOD DAMN IT.')
+          ? 'Název receptu musí obsahovat "Ackee"'
+          : 'Nastala chyba při přidávání receptu'
+    });
+  }).finally(() => dispatch(loadingEnd()));
+}
