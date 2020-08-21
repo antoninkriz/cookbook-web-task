@@ -25,15 +25,15 @@ class RecipesList extends React.Component {
     const {endOfRecipesList, recipesList} = this.props;
 
     const skeletonsCount = Math.floor(ITEMS_PER_PAGE / 2);
-    const skeletons =<>{initArrayIntegers(skeletonsCount).map(key => <RecipeSkeleton key={key}/>)}</>
+    const skeletons = <>{initArrayIntegers(skeletonsCount).map(key => <RecipeSkeleton key={key} />)}</>
 
     const addRecipeButton = (
-      <IonAddCircle className='bar__item__icon' onClick={() => alert('Add a recipe')}/>
+      <IonAddCircle className='bar__item__icon' onClick={() => alert('Add a recipe')} />
     );
 
     return (
       <>
-        <TitleBar title='Recepty' showBack={false} right={addRecipeButton}/>
+        <TitleBar title='Recepty' showBack={false} right={addRecipeButton} />
         <InfiniteScroll
           className='recipes'
           dataLength={recipesList.length}
@@ -41,7 +41,7 @@ class RecipesList extends React.Component {
           hasMore={!endOfRecipesList}
           loader={skeletons}>
           {
-            recipesList.map(recipe => <RecipeItem recipe={recipe} key={recipe.id}/>)
+            recipesList.map(recipe => <RecipeItem recipe={recipe} key={recipe.id} />)
           }
         </InfiniteScroll>
       </>

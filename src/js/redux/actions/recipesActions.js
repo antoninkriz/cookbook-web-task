@@ -47,6 +47,7 @@ export const postRecipeRating = (id, score) => (dispatch) => {
   });
 
   axios.post(`${API_URL}/${id}/rating`, {score: score})
-    .then(() => {})
+    .then(() => {
+    })
     .finally(() => dispatch(loadingEnd()));
 };

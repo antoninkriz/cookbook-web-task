@@ -106,7 +106,7 @@ class RecipeDetail extends React.Component {
         <div className='detail detail--skeleton'>
           <div className='detail__image detail__image--skeleton' />
           <div className='detail__content detail__content--skeleton'>
-            <div className='detail__content__title detail__content__title--skeleton'/>
+            <div className='detail__content__title detail__content__title--skeleton' />
             <div className='detail__content__info detail__content__info--skeleton'>
               <div className='detail__content__info__stars detail__content__info__stars--skeleton' />
               <div className='detail__content__info__time detail__content__info__time--skeleton' />
@@ -130,7 +130,7 @@ class RecipeDetail extends React.Component {
             </div>
           </div>
         </div>
-  );
+      );
 
     return (
       <>
