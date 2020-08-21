@@ -74,13 +74,7 @@ let config = {
         test: /\.(png|jpg|jpeg|gif|svg)$/,
         use: [
           {
-            loader: 'url-loader',
-            options: {
-              name: FILENAMES.images,
-              options: {
-                limit: 25000
-              }
-            }
+            loader: 'file-loader'
           }
         ]
       },

@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import {withRouter} from "react-router";
 import {IoIosArrowBack} from 'react-icons/io';
 
+// Utils
 import classNames from '../../utils/classNames';
 
 const TitleBar = (props) => {
@@ -12,11 +13,13 @@ const TitleBar = (props) => {
       'bar--white': props.type === 'white',
       'bar--transparent': props.type === 'transparent'
     })}>
-      <div className='bar__item bar__item--left'>
-        {props.showBack &&
-        <>
-          <IoIosArrowBack /> Zpět
-        </>
+      <div className='bar__item bar__item--left' onClick={() => props.history.goBack()}>
+        {
+          props.showBack &&
+          <>
+            <IoIosArrowBack className='bar__item__icon'/>
+            <span className='bar__item__label'>Zpět</span>
+          </>
         }
       </div>
       <span className='bar__title'>{props.title}</span>
@@ -41,4 +44,4 @@ TitleBar.propTypes = {
   type: PropTypes.oneOf(['white', 'transparent'])
 }
 
-export default TitleBar;
+export default withRouter(TitleBar);

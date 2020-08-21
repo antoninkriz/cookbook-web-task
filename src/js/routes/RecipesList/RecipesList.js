@@ -1,12 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {IoIosAddCircleOutline, IoMdTime} from 'react-icons/io';
+import {IoIosAddCircleOutline} from 'react-icons/io';
+import InfiniteScroll from "react-infinite-scroll-component";
+
+// Utils
 import {ITEMS_PER_PAGE} from '../../consts';
+import {initArrayIntegers} from "../../utils/araryInit";
+
+// Redux
 import {getRecipesList} from '../../redux/actions/recipesActions';
+
+// Components
 import TitleBar from '../../components/TitleBar/TitleBar';
-import image from '../../../images/image.png';
-import Stars from "../../components/Stars/Stars";
+import RecipeItem from "./_recipeItem";
+import RecipeSkeleton from "./_recipeSkeleton";
 
 class RecipesList extends React.Component {
   componentDidMount() {
@@ -14,39 +22,28 @@ class RecipesList extends React.Component {
   }
 
   render() {
+    const {endOfRecipesList, recipesList} = this.props;
+
     const skeletonsCount = Math.floor(ITEMS_PER_PAGE / 2);
-    const skeletons = new Array(skeletonsCount).fill(undefined).map((v, i) => i);
+    const skeletons =<>{initArrayIntegers(skeletonsCount).map(key => <RecipeSkeleton key={key}/>)}</>
 
     const addRecipeButton = (
-      <IoIosAddCircleOutline onClick={() => console.log('aaaaa')} />
+      <IoIosAddCircleOutline className='bar__item__icon' onClick={() => alert('Add a recipe')}/>
     );
 
     return (
       <>
-        <TitleBar title='Recepty' showBack={true} right={addRecipeButton} />
-        <div className='recipes'>
+        <TitleBar title='Recepty' showBack={true} right={addRecipeButton}/>
+        <InfiniteScroll
+          className='recipes'
+          dataLength={recipesList.length}
+          next={() => this.props.getRecipesList(Math.floor(recipesList.length / ITEMS_PER_PAGE))}
+          hasMore={!endOfRecipesList}
+          loader={skeletons}>
           {
-            this.props.recipesList.map(recipe =>
-              <article className='recipes__item' key={recipe.id}>
-                <img className='recipes__item__image' src={image} alt='image' />
-                <div className='recipes__item__content'>
-                  <h3 className='recipes__item__content__title'>{recipe.name}</h3>
-                  <div className='recipes__item__content__stars'>
-                    <Stars score={recipe.score} />
-                  </div>
-                  <span>
-                    <IoMdTime /> {recipe.duration} min.
-                  </span>
-                </div>
-              </article>
-            )
+            recipesList.map(recipe => <RecipeItem recipe={recipe} key={recipe.id}/>)
           }
-          {this.props.loading &&
-          skeletons.map(key =>
-            <p key={key}>Skeleton {key}</p>
-          )
-          }
-        </div>
+        </InfiniteScroll>
       </>
     );
   }

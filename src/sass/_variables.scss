@@ -1,7 +1,15 @@
+// Sizes
 $size-padding: 10px;
+$size-margin: $size-padding;
+
 $size-icon: 24px;
+$size-icon-small: 18px;
 
 $size-titleBar: 60px;
 
+// Weights
 $weight-thin: 300;
 $weight-bold: 600;
+
+// Z-Indexes
+$z-titleBar: 100;

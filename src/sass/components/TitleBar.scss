@@ -2,13 +2,17 @@
 @import "../variables";
 
 .bar {
-  position: relative;
+  position: fixed;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   height: $size-titleBar;
-  padding: $size-padding / 3;
+  padding: $size-padding;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: $z-titleBar;
 
   &--white {
     background: $color-white;
@@ -27,7 +31,7 @@
   &__item {
     z-index: 1;
 
-    svg {
+    &__icon {
       height: $size-icon;
       width: $size-icon;
     }
