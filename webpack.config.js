@@ -5,6 +5,7 @@ const webpack = require('webpack');
 const {merge} = require('webpack-merge');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const LiveReload = require('webpack-livereload-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 
@@ -137,6 +138,11 @@ const commonConfig = {
       template: FILENAMES.html,
       filename: FILENAMES.html
     }),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: 'static' }
+      ]
+    })
   ]
 };
 
