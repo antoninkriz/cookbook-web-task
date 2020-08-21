@@ -1,13 +1,13 @@
-import React from "react";
-import PropTypes from "prop-types";
-import {Link} from "react-router-dom";
-import {IoMdTime} from "react-icons/io/index";
+import React from 'react';
+import PropTypes from 'prop-types';
+import {Link} from 'react-router-dom';
+import {IonTime} from '../../components/Icons';
 
 // Components
-import Stars from "../../components/Stars/Stars";
+import Stars from '../../components/Stars/Stars';
 
 // Files
-import image from "../../../images/image.jpg";
+import image from '../../../images/image.jpg';
 
 const RecipeItem = (props) => {
   const recipe = props.recipe;
@@ -22,7 +22,7 @@ const RecipeItem = (props) => {
             <Stars className='recipes__item__wrapper__content__stars__icon' score={recipe.score} />
           </div>
           <div className='recipes__item__wrapper__content__time'>
-            <IoMdTime className='recipes__item__wrapper__content__time__icon' />
+            <IonTime className='recipes__item__wrapper__content__time__icon' />
             <span className='recipes__item__wrapper__content__time__label'>{recipe.duration} min.</span>
           </div>
         </div>

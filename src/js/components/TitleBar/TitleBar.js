@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {withRouter} from "react-router";
-import {IoIosArrowBack} from 'react-icons/io';
+import {withRouter} from 'react-router';
+import {IonChevronBack} from '../Icons';
 
 // Utils
 import classNames from '../../utils/classNames';
@@ -17,7 +17,7 @@ const TitleBar = (props) => {
         {
           props.showBack &&
           <>
-            <IoIosArrowBack className='bar__item__icon'/>
+            <IonChevronBack className='bar__item__icon' />
             <span className='bar__item__label'>Zpět</span>
           </>
         }

@@ -6,6 +6,7 @@ const {merge} = require('webpack-merge');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlPlugin = require('html-webpack-plugin');
 const LiveReload = require('webpack-livereload-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 const packages = require('./package.json');
 
@@ -33,7 +34,7 @@ fs.readdirSync(PATHS.app).forEach((file) => {
   }
 });
 
-console.log(`Building Webpack project with enviroment "${environment}"`);
+console.log(`Building Webpack project with environment "${environment}"`);
 
 let config = {
   context: PATHS.app,
@@ -110,30 +111,52 @@ const commonConfig = {
   },
   optimization: {
     splitChunks: {
+      chunks: 'async',
+      minSize: 20000,
+      maxSize: 200000,
+      minChunks: 1,
+      maxAsyncRequests: 10,
+      maxInitialRequests: 5,
+      automaticNameDelimiter: '~',
+      enforceSizeThreshold: 50000,
       cacheGroups: {
-        commons: {
+        defaultVendors: {
           test: /[\\/]node_modules[\\/]/,
-          name: 'vendors',
-          chunks: 'all'
+          priority: -10
+        },
+        default: {
+          minChunks: 2,
+          priority: -20,
+          reuseExistingChunk: true
         }
       }
     }
-  }
+  },
+  plugins: [
+    new HtmlPlugin({
+      template: FILENAMES.html,
+      filename: FILENAMES.html
+    }),
+  ]
 };
 
-if (environment === 'production') {
+if (environment === 'production'
+) {
   envConfig.plugins = [
     new webpack.optimize.OccurrenceOrderPlugin(undefined),
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap: false
-    })
   ];
+  envConfig.optimization = {
+    minimize: true,
+    minimizer: [
+      new TerserPlugin({
+        sourceMap: true,
+        extractComments: false
+      })
+    ]
+  }
   envConfig.devtool = 'source-map';
 } else {
   envConfig.plugins = [
-    new HtmlPlugin({
-      filename: FILENAMES.html
-    }),
     new LiveReload()
   ];
   envConfig.devServer = {

@@ -1,20 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {IoIosAddCircleOutline} from 'react-icons/io';
-import InfiniteScroll from "react-infinite-scroll-component";
+import {IonAddCircle} from '../../components/Icons';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 // Utils
 import {ITEMS_PER_PAGE} from '../../consts';
-import {initArrayIntegers} from "../../utils/araryInit";
+import {initArrayIntegers} from '../../utils/araryInit';
 
 // Redux
 import {getRecipesList} from '../../redux/actions/recipesActions';
 
 // Components
 import TitleBar from '../../components/TitleBar/TitleBar';
-import RecipeItem from "./_recipeItem";
-import RecipeSkeleton from "./_recipeSkeleton";
+import RecipeItem from './_recipeItem';
+import RecipeSkeleton from './_recipeSkeleton';
 
 class RecipesList extends React.Component {
   componentDidMount() {
@@ -28,7 +28,7 @@ class RecipesList extends React.Component {
     const skeletons =<>{initArrayIntegers(skeletonsCount).map(key => <RecipeSkeleton key={key}/>)}</>
 
     const addRecipeButton = (
-      <IoIosAddCircleOutline className='bar__item__icon' onClick={() => alert('Add a recipe')}/>
+      <IonAddCircle className='bar__item__icon' onClick={() => alert('Add a recipe')}/>
     );
 
     return (

@@ -8,6 +8,7 @@
   ],
   "license": "MIT",
   "scripts": {
+    "analyze": "source-map-explorer 'build/*.js'",
     "build:dev": "export NODE_ENV=development; webpack-dev-server --open --config ./webpack.config.js",
     "build:prod": "export NODE_ENV=production; webpack --progress --config ./webpack.config.js"
   },
@@ -22,7 +23,9 @@
     "mini-css-extract-plugin": "^0.10.0",
     "node-sass": "^4.14.1",
     "sass-loader": "^9.0.3",
+    "source-map-explorer": "^2.5.0",
     "style-loader": "^1.2.1",
+    "terser-webpack-plugin": "^4.1.0",
     "url-loader": "^4.1.0",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12",
@@ -35,7 +38,6 @@
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-icons": "^3.11.0",
     "react-infinite-scroll-component": "^5.0.5",
     "react-redux": "^7.2.1",
     "react-router": "^5.2.0",
