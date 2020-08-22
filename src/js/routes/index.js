@@ -6,6 +6,9 @@ import RecipesList from './RecipesList/RecipesList';
 import RecipeDetail from "./RecipeDetail/RecipeDetail";
 import RecipeCreate from "./RecipeCreate/RecipeCreate";
 
+/**
+ * Helper components that forces browser to scroll to top when changing a route
+ */
 const ScrollToTop = () => {
   const {pathname} = useLocation();
 

@@ -1,4 +1,4 @@
-import {CREATE_CLEAR, CREATE_ERROR, LOADING_END, LOADING_START} from '../types';
+import {CREATE_CLEAR, CREATE_ERROR, CREATE_OK, LOADING_END, LOADING_START} from '../types';
 
 const initialState = {
   loading: false,
@@ -21,6 +21,11 @@ const uiReducer = (state = initialState, action) => {
       return {
         ...state,
         createError: action.payload
+      };
+    case CREATE_OK:
+      return {
+        ...state,
+        createError: false
       };
     case CREATE_CLEAR:
       return {

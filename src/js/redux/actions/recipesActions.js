@@ -1,6 +1,6 @@
 import {default as axios} from 'axios';
-import {loadingEnd, loadingStart} from './uiActions';
-import {CREATE_ERROR, RECIPE_CREATE, RECIPE_DETAIL, RECIPE_LIST, RECIPE_RATE} from '../types';
+import {createRecipeError, createRecipeOk, loadingEnd, loadingStart} from './uiActions';
+import {RECIPE_CREATE, RECIPE_DETAIL, RECIPE_LIST, RECIPE_RATE} from '../types';
 import {API_URL, ITEMS_PER_PAGE} from '../../consts';
 
 export const getRecipesList = (page) => (dispatch) => {
@@ -56,18 +56,12 @@ export const postRecipeNew = (name, description, ingredients, duration, info) =>
       type: RECIPE_CREATE,
       payload: r.data
     });
-    dispatch({
-      type: CREATE_ERROR,
-      payload: false
-    });
+    dispatch(createRecipeOk());
   }).catch(e => {
-    dispatch({
-      type: CREATE_ERROR,
-      payload: e.response?.status === 422
-        ? 'Recept s tímto názvem již existuje'
-        : e.response.data.message.startsWith('Name must obtain Ackee at least once! This is Ackee cookbook GOD DAMN IT.')
-          ? 'Název receptu musí obsahovat "Ackee"'
-          : 'Nastala chyba při přidávání receptu'
-    });
+    dispatch(createRecipeError(e.response?.status === 422
+      ? 'Recept s tímto názvem již existuje'
+      : e.response.data.message.startsWith('Name must obtain Ackee at least once! This is Ackee cookbook GOD DAMN IT.')
+        ? 'Název receptu musí obsahovat "Ackee"'
+        : 'Nastala chyba při přidávání receptu'));
   }).finally(() => dispatch(loadingEnd()));
 }

@@ -1,6 +1,7 @@
 // UI types
 export const LOADING_START = 'LOADING_START';
 export const LOADING_END = 'LOADING_END';
+export const CREATE_OK = 'CREATE_OK';
 export const CREATE_ERROR = 'CREATE_ERROR';
 export const CREATE_CLEAR = 'CREATE_CLEAR';
 

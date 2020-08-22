@@ -3,14 +3,16 @@ import PropTypes from 'prop-types';
 import {Redirect} from "react-router";
 import {connect} from 'react-redux';
 
+// Utils
+import classNames from '../../utils/classNames';
+
 // Redux
 import {postRecipeNew} from '../../redux/actions/recipesActions';
-import {clearRecipeError} from '../../redux/actions/uiActions';
+import {createRecipeClear} from '../../redux/actions/uiActions';
 
 // Components
 import TitleBar from '../../components/TitleBar/TitleBar';
-import IonAdd from '../../components/Icons/_IonAdd';
-import classNames from '../../utils/classNames';
+import {IonAdd} from '../../components/Icons';
 
 class RecipeCreate extends React.Component {
   constructor(props) {
@@ -38,7 +40,7 @@ class RecipeCreate extends React.Component {
   }
 
   componentWillUnmount() {
-    clearRecipeError();
+    this.props.createRecipeClear();
   }
 
   change(event) {
@@ -152,7 +154,7 @@ class RecipeCreate extends React.Component {
         <TitleBar title='Přidat recept' type='white' showBack={true} right={createRecipeButton} />
         <form className='create' autoComplete='off'>
           {
-            typeof this.props.error && <span className='create__error'>{this.props.error}</span>
+            this.props.error && <span className='create__error'>{this.props.error}</span>
           }
           <span className='create__title'>Název receptu</span>
           <div className={classNames({
@@ -212,7 +214,7 @@ class RecipeCreate extends React.Component {
 
 RecipeCreate.propTypes = {
   postRecipeNew: PropTypes.func.isRequired,
-  clearRecipeError: PropTypes.func.isRequired,
+  createRecipeClear: PropTypes.func.isRequired,
   error: PropTypes.oneOfType([PropTypes.string.isRequired, PropTypes.bool.isRequired]).isRequired
 };
 
@@ -224,5 +226,5 @@ const mapStateToProps = (state) => ({
 
 export default connect(
   mapStateToProps,
-  {postRecipeNew, clearRecipeError}
+  {postRecipeNew, createRecipeClear}
 )(RecipeCreate);
